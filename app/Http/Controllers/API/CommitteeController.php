@@ -24,7 +24,7 @@ class CommitteeController extends Controller
         }
     }
 
-    public function store(StoreCommitteeRequest $request){
+    public function store(Request $request){
         $service = new CommitteeService;
         $committee = $service->createCommittee($request);
         if ($committee) {
@@ -56,7 +56,7 @@ class CommitteeController extends Controller
         }
     }
 
-    public function update(UpdateCommitteeRequest $request,$id){
+    public function update(Request $request,$id){
         $service = new CommitteeService;
         $committee = $service->updateCommittee($request,$id);
         if ($committee) {

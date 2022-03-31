@@ -25,5 +25,25 @@ class PermissionSeeder extends Seeder
 
         $sync_permissions = $admin_role->givePermissionTo([ $view_all, $create, $edit, $delete, $show ]);
         // Users Module Permissions end
+
+
+        // Committees Module Permissions Start
+        $view_all = Permission::create(['name' => 'View All Committees']);
+        $create = Permission::create(['name' => 'Create Committee']);
+        $edit = Permission::create(['name' => 'Edit Committee']);
+        $delete = Permission::create(['name' => 'Delete Committee']);
+        $show = Permission::create(['name' => 'Show Committee']);
+        $sync_permissions = $admin_role->givePermissionTo([ $view_all, $create, $edit, $delete, $show ]);
+        // Committees Module Permissions End
+
+
+        // Event Locations Module Permissions Start
+        $view_all = Permission::create(['name' => 'View All Event Locations']);
+        $create = Permission::create(['name' => 'Create Event Location']);
+        $edit = Permission::create(['name' => 'Edit Event Location']);
+        $delete = Permission::create(['name' => 'Delete Event Location']);
+        $show = Permission::create(['name' => 'Show Event Location']);
+        $sync_permissions = $admin_role->givePermissionTo([ $view_all, $create, $edit, $delete, $show ]);
+        // Event Locations Module Permissions End
     }
 }

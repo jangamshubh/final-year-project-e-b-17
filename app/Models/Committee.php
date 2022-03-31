@@ -8,4 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Committee extends Model
 {
     use HasFactory;
+
+    protected $table = 'committees';
+    protected $fillable = ['name','description','admin_id'];
 }
