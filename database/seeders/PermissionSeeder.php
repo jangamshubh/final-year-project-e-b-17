@@ -16,6 +16,7 @@ class PermissionSeeder extends Seeder
     {
         // Users Module Permission start
         $admin_role = Role::find(1);
+        $committee_admin_role = Role::find(2);
 
         $view_all = Permission::create(['name' => 'View All Users']);
         $create = Permission::create(['name' => 'Create User']);
@@ -33,7 +34,9 @@ class PermissionSeeder extends Seeder
         $edit = Permission::create(['name' => 'Edit Committee']);
         $delete = Permission::create(['name' => 'Delete Committee']);
         $show = Permission::create(['name' => 'Show Committee']);
+        $individual_committee = Permission::create(['name' => 'Get Individual Committee']);
         $sync_permissions = $admin_role->givePermissionTo([ $view_all, $create, $edit, $delete, $show ]);
+        $sync_permissions = $committee_admin_role->givePermissionTo([ $individual_committee ]);
         // Committees Module Permissions End
 
 
@@ -45,5 +48,16 @@ class PermissionSeeder extends Seeder
         $show = Permission::create(['name' => 'Show Event Location']);
         $sync_permissions = $admin_role->givePermissionTo([ $view_all, $create, $edit, $delete, $show ]);
         // Event Locations Module Permissions End
+
+
+        // Event Module Permissions Start
+        $view_all = Permission::create(['name' => 'View All Event Locations']);
+        $create = Permission::create(['name' => 'Create Event Location']);
+        $edit = Permission::create(['name' => 'Edit Event Location']);
+        $delete = Permission::create(['name' => 'Delete Event Location']);
+        $show = Permission::create(['name' => 'Show Event Location']);
+        $sync_permissions = $admin_role->givePermissionTo([ $view_all, $create, $edit, $delete, $show ]);
+        $sync_permissions = $committee_admin_role->givePermissionTo([ $view_all, $create, $edit, $delete, $show ]);
+        // Event Module Permissions End
     }
 }

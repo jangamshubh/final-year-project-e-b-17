@@ -24,6 +24,7 @@ class CreateEventsTable extends Migration
             $table->text('end_time')->nullable();
             $table->foreignId('committee_id')->constrained('committees');
             $table->foreignId('event_location_id')->constrained('event_locations');
+            $table->foreignId('added_by')->constrained('users');
             $table->integer('is_approved')->default(0);
             $table->integer('registration_approval_needed')->default(0);
             $table->timestamps();
