@@ -6,7 +6,8 @@ use Illuminate\Database\Seeder;
 use Database\Seeders\UserSeeder;
 use Database\Seeders\RoleSeeder;
 use Database\Seeders\PermissionSeeder;
-
+use Database\Seeders\CommitteeSeeder;
+use Database\Seeders\EventLocationSeeder;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -20,6 +21,8 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             PermissionSeeder::class,
             UserSeeder::class,
+            CommitteeSeeder::class,
+            EventLocationSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();

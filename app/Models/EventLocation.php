@@ -11,4 +11,8 @@ class EventLocation extends Model
 
     protected $table = 'event_locations';
     protected $fillable = ['name','description','location','seating_capacity'];
+
+    public function event_get_event_locations() {
+        return $this->hasMany('App\Models\Event', 'event_location_id');
+    }
 }

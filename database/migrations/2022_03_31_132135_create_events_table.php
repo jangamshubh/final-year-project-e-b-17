@@ -17,7 +17,6 @@ class CreateEventsTable extends Migration
             $table->id();
             $table->text('name');
             $table->text('description')->nullable();
-            $table->text('type')->nullable();
             $table->text('date')->nullable();
             $table->text('no_of_people_expected')->nullable();
             $table->text('start_time')->nullable();
@@ -26,7 +25,7 @@ class CreateEventsTable extends Migration
             $table->foreignId('event_location_id')->constrained('event_locations');
             $table->foreignId('added_by')->constrained('users');
             $table->integer('is_approved')->default(0);
-            $table->integer('registration_approval_needed')->default(0);
+            $table->text('approved_at')->nullable();
             $table->timestamps();
         });
     }
