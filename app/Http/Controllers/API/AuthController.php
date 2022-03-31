@@ -30,8 +30,8 @@ class AuthController extends Controller
         if (! $token = auth()->attempt($req->validated())) {
             return response()->json(['Auth error' => 'Unauthorized'], 401);
         }
-
-        return $this->generateToken($token);
+        $role = Auth::user()->getRoleNames()->first();
+        return $this->generateToken($token,$role);
     }
 
     /**
@@ -87,12 +87,13 @@ class AuthController extends Controller
     /**
      * Generate token
      */
-    protected function generateToken($token){
+    protected function generateToken($token,$role){
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
             'expires_in' => auth()->factory()->getTTL() * 60,
-            'user' => auth()->user()
+            'user' => auth()->user(),
+            'role' => $role,
         ]);
     }
 

@@ -27,6 +27,11 @@ Route::group(['middleware' => 'api', 'prefix' => 'auth'], function ($router) {
     Route::post('/signout', [AuthController::class, 'signout']);
 });
 
+Route::group(['prefix'=>'roles'], function ($router) {
+    Route::get('/',[RoleController::class, 'index'])->name('roles.index');
+    Route::get('/{id}/show',[RoleController::class, 'show'])->name('roles.show');
+});
+
 Route::group(['prefix'=>'users'], function ($router) {
     Route::get('/',[UserController::class, 'index'])->name('users.index');
     Route::post('/store',[UserController::class, 'store'])->name('users.store');

@@ -44,7 +44,7 @@ class EventService {
     }
 
     public function deleteEvent($id) {
-        if(Auth::user()->hasPermissionTo('Edit Event')) {
+        if(Auth::user()->hasPermissionTo('Delete Event')) {
             $event = Event::find($id);
             $event->delete();
             $event = 'success';

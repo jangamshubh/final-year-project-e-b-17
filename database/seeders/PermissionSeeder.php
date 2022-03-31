@@ -4,7 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
-
+use Spatie\Permission\Models\Role;
 class PermissionSeeder extends Seeder
 {
     /**
@@ -26,6 +26,12 @@ class PermissionSeeder extends Seeder
 
         $sync_permissions = $admin_role->givePermissionTo([ $view_all, $create, $edit, $delete, $show ]);
         // Users Module Permissions end
+
+        // Roles Module Permissions Start
+        $view_all = Permission::create(['name' => 'View All Roles']);
+        $show = Permission::create(['name' => 'Show Role']);
+        $sync_permissions = $admin_role->givePermissionTo([ $view_all, $show ]);
+        // Roles Module Permissions End
 
 
         // Committees Module Permissions Start
@@ -51,11 +57,11 @@ class PermissionSeeder extends Seeder
 
 
         // Event Module Permissions Start
-        $view_all = Permission::create(['name' => 'View All Event Locations']);
-        $create = Permission::create(['name' => 'Create Event Location']);
-        $edit = Permission::create(['name' => 'Edit Event Location']);
-        $delete = Permission::create(['name' => 'Delete Event Location']);
-        $show = Permission::create(['name' => 'Show Event Location']);
+        $view_all = Permission::create(['name' => 'View All Events']);
+        $create = Permission::create(['name' => 'Create Event']);
+        $edit = Permission::create(['name' => 'Edit Event']);
+        $delete = Permission::create(['name' => 'Delete Event']);
+        $show = Permission::create(['name' => 'Show Event']);
         $sync_permissions = $admin_role->givePermissionTo([ $view_all, $create, $edit, $delete, $show ]);
         $sync_permissions = $committee_admin_role->givePermissionTo([ $view_all, $create, $edit, $delete, $show ]);
         // Event Module Permissions End
