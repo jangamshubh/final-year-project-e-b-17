@@ -8,7 +8,7 @@ use Auth;
 class UserService {
 
     public function getAllUsers() {
-        if(Auth::user()->hasPermissionTo('View All Users')) {
+        if(Auth::user()->hasPermissionTo('Get All Users')) {
             $users = User::all();
             return $users;
         }
@@ -56,6 +56,13 @@ class UserService {
         if(Auth::user()->hasPermissionTo('Show User')) {
             $user = User::find($id);
             return $user;
+        }
+    }
+
+    public function getAllCommitteeAdmins() {
+        if(Auth::user()->hasPermissionTo('Get All Users')) {
+            $users = User::role('Committee Admin')->get();
+            return $users;
         }
     }
 

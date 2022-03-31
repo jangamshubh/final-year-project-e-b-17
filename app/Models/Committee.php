@@ -11,4 +11,9 @@ class Committee extends Model
 
     protected $table = 'committees';
     protected $fillable = ['name','description','admin_id'];
+
+
+    public function committee_get_admins() {
+        return $this->belongsTo('App\Models\User', 'admin_id');
+    }
 }

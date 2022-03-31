@@ -39,6 +39,7 @@ Route::group(['prefix'=>'users'], function ($router) {
     Route::put('/{id}/update',[UserController::class, 'update'])->name('users.update');
     Route::get('/{id}/delete',[UserController::class, 'delete'])->name('users.delete');
     Route::get('/{id}/show',[UserController::class, 'show'])->name('users.show');
+    Route::get('/getAllCommitteeAdmins', [UserController::class, 'getAllCommitteeAdmins'])->name('users.getAllCommitteeAdmins');
 });
 
 Route::group(['prefix'=>'committees'], function ($router) {

@@ -18,7 +18,7 @@ class PermissionSeeder extends Seeder
         $admin_role = Role::find(1);
         $committee_admin_role = Role::find(2);
 
-        $view_all = Permission::create(['name' => 'View All Users']);
+        $view_all = Permission::create(['name' => 'Get All Users']);
         $create = Permission::create(['name' => 'Create User']);
         $edit = Permission::create(['name' => 'Edit User']);
         $delete = Permission::create(['name' => 'Delete User']);
@@ -35,7 +35,7 @@ class PermissionSeeder extends Seeder
 
 
         // Committees Module Permissions Start
-        $view_all = Permission::create(['name' => 'View All Committees']);
+        $view_all = Permission::create(['name' => 'Get All Committees']);
         $create = Permission::create(['name' => 'Create Committee']);
         $edit = Permission::create(['name' => 'Edit Committee']);
         $delete = Permission::create(['name' => 'Delete Committee']);

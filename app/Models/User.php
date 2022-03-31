@@ -22,6 +22,7 @@ class User extends Authenticatable implements JWTSubject
      */
     protected $fillable = [
         'name',
+        'mobile_number',
         'email',
         'password',
     ];
@@ -51,6 +52,10 @@ class User extends Authenticatable implements JWTSubject
 
     public function getJWTCustomClaims() {
         return [];
+    }
+
+    public function committee_get_admins() {
+        return $this->hasMany('App\Models\Committee', 'admin_id');
     }
 
 }

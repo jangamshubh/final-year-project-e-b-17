@@ -24,7 +24,7 @@ class UserController extends Controller
         }
     }
 
-    public function store(StoreUserRequest $request){
+    public function store(Request $request){
         $service = new UserService;
         $user = $service->createUser($request);
         if ($user) {
@@ -56,7 +56,7 @@ class UserController extends Controller
         }
     }
 
-    public function update(UpdateUserRequest $request,$id){
+    public function update(Request $request,$id){
         $service = new UserService;
         $user = $service->updateUser($request,$id);
         if ($user) {
@@ -95,6 +95,23 @@ class UserController extends Controller
             return response()->json([
                 'data' => $user,
                 'message' => 'User Retrieved Successfully',
+                'status' => 'Success',
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'error'
+            ]);
+        }
+    }
+
+
+    public function getAllCommitteeAdmins() {
+        $service = new UserService;
+        $admins = $service->getAllCommitteeAdmins();
+        if ($admins) {
+            return response()->json([
+                'data' => $admins,
+                'message' => 'Users Retrieved Successfully',
                 'status' => 'Success',
             ]);
         } else {
