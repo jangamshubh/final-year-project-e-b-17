@@ -5,6 +5,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\RoleController;
+use App\Http\Controllers\API\CommitteeController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -31,4 +33,13 @@ Route::group(['prefix'=>'users'], function ($router) {
     Route::put('/{id}/update',[UserController::class, 'update'])->name('users.update');
     Route::get('/{id}/delete',[UserController::class, 'delete'])->name('users.delete');
     Route::get('/{id}/show',[UserController::class, 'show'])->name('users.show');
+});
+
+Route::group(['prefix'=>'committees'], function ($router) {
+    Route::get('/',[CommitteeController::class, 'index'])->name('committees.index');
+    Route::post('/store',[CommitteeController::class, 'store'])->name('committees.store');
+    Route::get('/{id}/edit',[CommitteeController::class, 'edit'])->name('committees.edit');
+    Route::put('/{id}/update',[CommitteeController::class, 'update'])->name('committees.update');
+    Route::get('/{id}/delete',[CommitteeController::class, 'delete'])->name('committees.delete');
+    Route::get('/{id}/show',[CommitteeController::class, 'show'])->name('committees.show');
 });
