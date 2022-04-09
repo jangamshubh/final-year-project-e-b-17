@@ -6,7 +6,10 @@ use App\Models\Event;
 use Auth;
 use App\Models\Committee;
 use Carbon\Carbon;
-
+use App\Mail\EventCreatedMail;
+use App\Mail\EventApprovedMail;
+use Mail;
+use App\Models\User;
 class EventService {
 
     public function getAllEvents() {
@@ -36,6 +39,13 @@ class EventService {
             $event->added_by = Auth::id();
             $event->is_approved = 0;
             $event->save();
+            $committee = Committee::find($committee_id);
+            $mailData = [
+                'title' => 'A new event has been added by '.$committee->name,
+                'body' => 'Please check the platform for more details about the event',
+            ];
+
+            Mail::to('veventmanagementsystemvit@gmail.com')->send(new EventCreatedMail($mailData));
             return $event;
         }
     }
@@ -46,6 +56,12 @@ class EventService {
             $event->is_approved = 1;
             $event->approved_at = Carbon::now()->format('d-m-Y H:i');
             $event->update();
+            $admin = User::where('id',$event->added_by)->first();
+            $mailData = [
+                'title' => 'The event has been approved by the Admin!',
+                'body' => 'Please check the platform for more details about the event',
+            ];
+            Mail::to($admin->email)->send(new EventApprovedMail($mailData));
             return $event;
         }
     }
