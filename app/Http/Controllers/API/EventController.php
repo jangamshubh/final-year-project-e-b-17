@@ -118,4 +118,20 @@ class EventController extends Controller
             ]);
         }
     }
+
+    public function rejectEvent($id) {
+        $service = new EventService;
+        $event = $service->rejectEvent($id);
+        if ($event) {
+            return response()->json([
+                'data' => $event,
+                'message' => 'Event Retrieved Successfully',
+                'status' => 'Success',
+            ]);
+        } else {
+            return response()->json([
+                'message' => 'error'
+            ]);
+        }
+    }
 }

@@ -65,6 +65,20 @@ class EventService {
             return $event;
         }
     }
+    public function rejectEvent($id) {
+        if(Auth::user()->hasPermissionTo('Approve Event')) {
+            $event = Event::find($id);
+            $event->is_approved = 2;
+            $event->update();
+            $admin = User::where('id',$event->added_by)->first();
+            $mailData = [
+                'title' => 'The event has been rejected by the Admin!',
+                'body' => 'Please check the platform for more details about the event',
+            ];
+            Mail::to($admin->email)->send(new EventApprovedMail($mailData));
+            return $event;
+        }
+    }
 
     public function editEvent($id) {
         if(Auth::user()->hasPermissionTo('Edit Event')) {

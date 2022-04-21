@@ -68,4 +68,5 @@ Route::group(['prefix'=>'events'], function ($router) {
     Route::get('/{id}/delete',[EventController::class, 'delete'])->name('events.delete');
     Route::get('/{id}/show',[EventController::class, 'show'])->name('events.show');
     Route::get('/{id}/approve',[EventController::class, 'approveEvent'])->name('events.approveEvent');
+    Route::get('/{id}/reject',[EventController::class, 'rejectEvent'])->name('events.rejectEvent');
 });
