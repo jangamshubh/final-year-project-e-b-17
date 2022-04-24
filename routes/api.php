@@ -8,6 +8,7 @@ use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\API\CommitteeController;
 use App\Http\Controllers\API\EventLocationController;
 use App\Http\Controllers\API\EventController;
+use App\Http\Controllers\API\DashboardController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -70,3 +71,5 @@ Route::group(['prefix'=>'events'], function ($router) {
     Route::get('/{id}/approve',[EventController::class, 'approveEvent'])->name('events.approveEvent');
     Route::get('/{id}/reject',[EventController::class, 'rejectEvent'])->name('events.rejectEvent');
 });
+
+Route::get('dashboard',[DashboardController::class,'index'])->name('events.dashboard');
