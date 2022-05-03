@@ -53,7 +53,7 @@ class PermissionSeeder extends Seeder
         $delete = Permission::create(['name' => 'Delete Event Location']);
         $show = Permission::create(['name' => 'Show Event Location']);
         $sync_permissions = $admin_role->givePermissionTo([ $view_all, $create, $edit, $delete, $show ]);
-        $sync_permissions = $committee_admin_role->givePermissionTo([ $view_all ]);
+        $sync_permissions = $committee_admin_role->givePermissionTo([ $view_all,$show ]);
         // Event Locations Module Permissions End
 
 
